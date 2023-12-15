@@ -53,7 +53,7 @@ def consultarReserva(numHab):
                 else:
                     print("Habitación sin reserva")
                 return habitacion        
-            
+    return None        
 
 # Función 'anularReserva' para eliminar la reserva de una habitación
     # La habitación debe devolverse a su estado inicial
@@ -70,7 +70,7 @@ def anularReserva(numHab):
                 habitacion["clase"] = "normal"
             habitacion["precio"] =0.0
             return habitacion
-    
+    return None
 
 # Función 'modificarReserva' para modificar la reserva de una habitación
     # La función sólo debe dejar modificar las claves "fechaIngreso" y "numNoches"
@@ -102,7 +102,7 @@ def estaLibre(numHab):
         for num,habitacion in enumerate(habitaciones):
             if habitacion["numero"] == numHab:
                 return  habitacion["ocupada"]     
-
+    return None
 
 # SECCIÓN 3: PROGRAMA PRINCIPAL ###########################################################
 
@@ -111,10 +111,10 @@ hacerReserva(3,1,"20221117",4)              # Hacemos tres reservas
 hacerReserva(1,3,"20221123",5)
 hacerReserva(4,2,"20221201",1)
 print(json.dumps(hotel, indent=4))        # Mostramos estado del hotel
-# for X,Y in consultarReserva(45).items():  # Consultamos la reserva de la habitación 45
-#     print(f"{X}: {Y}")
-# for X,Y in anularReserva(42).items():
-#     print(f"{X}: {Y}")                    # Anulamos la reserva de la habitación 42
+for X,Y in consultarReserva(45).items():  # Consultamos la reserva de la habitación 45
+    print(f"{X}: {Y}")
+for X,Y in anularReserva(42).items():
+    print(f"{X}: {Y}")                    # Anulamos la reserva de la habitación 42
 modificarReserva("numNoches",2,42)        # Modificamos la reserva de la habitación 42
 print(json.dumps(hotel, indent=4))        # Mostramos estado del hotel
 print(listarOcupadas())                   # Listamos las habitaciones no ocupadas
